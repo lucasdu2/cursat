@@ -1,0 +1,6 @@
+# dune init proj cursat
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /home/lucasdu/.cache/dune/db
+# Workspace root: /home/lucasdu/coding4fun/cursat
+# Auto-detected concurrency: 16
