@@ -1,2 +1,2 @@
 # cursat
-A bare-bones CDCL SAT solver in OCaml.
+A minimal CDCL SAT solver in OCaml. This %%%% is %%%%%%!
