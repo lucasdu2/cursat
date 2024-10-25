@@ -21,7 +21,7 @@ type var_id = int
 
 type literal = {
     sign : Sign.t;
-    id   : varid
+    id   : var_id
   }
 
 type value = (int * int * literal list list)

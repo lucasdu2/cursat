@@ -5,11 +5,11 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github lucasdu2/cursat))
 
-(authors "Author Name")
+(authors "Lucas Du")
 
-(maintainers "Maintainer Name")
+(maintainers "Lucas Du")
 
 (license LICENSE)
 
