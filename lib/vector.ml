@@ -37,7 +37,6 @@ module Poly = struct
     vec.elements <- Array.append vec.elements (Array.create ~len:grow_by pad);
     vec.capacity <- vec.capacity + grow_by
 
- (* TODO: Use Result type instead of exceptions *)
   let pop vec =
     if vec.size <= 0 then
       Error (Error.of_string "Stack underflow")
@@ -46,9 +45,8 @@ module Poly = struct
 
   let push vec element =
     let new_size = vec.size + 1 in
-    let grow_by = 32 in
       while new_size > vec.capacity do
-        grow vec grow_by element
+        grow vec vec.capacity element
       done;
       vec.elements.(vec.size) <- element;
       vec.size <- new_size
@@ -59,7 +57,18 @@ module Poly = struct
     else
       Ok vec.elements.(n)
 
+  let last vec =
+    nth (vec.size) vec
+
+  let head vec =
+    nth 0 vec
+
   let clear vec = vec.size <- 0
+
+  let copy vec =
+    { elements = Array.copy vec.elements;
+      size = vec.size;
+      capacity = vec.capacity }
 end
 
 (* elements of Vector --- can be of arbitrary type *)
@@ -68,6 +77,19 @@ module type Element = sig
 end
 
 (* Make functor to construct polymorphic Vector *)
-(* module Make (e : Element) = struct *)
-
-(* end *)
+module Make (e : Element) = struct
+  type element = E.t
+  type t = E.t Poly.t
+  let empty = Poly.empty
+  let make = Poly.make
+  let size = Poly.size
+  let shrink  = Poly.shrink
+  let grow = Poly.grow
+  let pop = Poly.pop
+  let push = Poly.push
+  let nth = Poly.nth
+  let last = Poly.last
+  let head = Poly.head
+  let clear = Poly.clear
+  let copy = Poly.copy
+end

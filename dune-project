@@ -11,16 +11,12 @@
 
 (maintainers "Lucas Du")
 
-(license LICENSE)
-
-(documentation https://url/to/documentation)
+(using menhir 3.0)
 
 (package
  (name cursat)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "A toy CDCL SAT solver")
+ (description "A toy CDCL SAT solver in OCaml, based on MiniSAT")
  (depends ocaml dune)
- (tags
-  (topics "to describe" your project)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
