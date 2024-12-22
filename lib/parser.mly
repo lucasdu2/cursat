@@ -1,25 +1,24 @@
-%token EOF (* end of file *)
-%token EOC (* end of clause *)
-%token <int * int> DIMACS (* number of variables * number of clauses *)
-%token <int> LIT (* int representation of literals *)
+%token EOF
+%token EOC
+%token <int * int> DIMACS
+%token <int> LIT
 
-(* NOTE: Cnf.t is of type int * int * Lit.t list list *)
-%start <Cnf.t option> dimacs
+%start <Dimacs.t option> dimacs
 %%
 
 dimacs:
-  | (nbvars, nbclauses) = DIMACS; cj = conjunction { (nbvars, nbclauses, cj) }
+  | d = DIMACS; f = conjunction { Some {preamble = d; formula = f} }
+  | EOF { None };
 
 conjunction:
   | dj = disjunction; cj = conjunction { dj :: cj }
   | EOF { [] }
 
-(* TODO: Try to figure out how error handling works in Menhir; then try to
-disallow 0 LITs within this parser (instead of depending on lexer) *)
+(* NOTE: We currently rely on the lexer to ensure that no literals are 0. *)
 disjunction:
-  | l = LIT; disjunction
+  | l = LIT; dj = disjunction
     { if l > 0 then
-        Lit.make_t (abs l) :: disjunction
+        Lit.make_t (abs l) :: dj
       else
-        Lit.make_f (abs l) :: disjunction }
+        Lit.make_f (abs l) :: dj }
   | EOC { [] }

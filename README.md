@@ -1,2 +1,2 @@
 # cursat
-A minimal CDCL SAT solver in OCaml. This 🤬 is 🤬ed!
+A minimal, (re)cursed CDCL SAT solver in OCaml.

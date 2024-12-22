@@ -77,7 +77,7 @@ module type Element = sig
 end
 
 (* Make functor to construct polymorphic Vector *)
-module Make (e : Element) = struct
+module Make (E : Element) = struct
   type element = E.t
   type t = E.t Poly.t
   let empty = Poly.empty

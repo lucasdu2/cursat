@@ -1,8 +1,10 @@
-(library
- (name cursat)
- (libraries base))
-
 (menhir
  (modules parser))
 
 (ocamllex lexer)
+
+(library
+ (name cursat)
+ (modules parser lexer dimacs lit vector varId)
+ (libraries core core_unix))
+

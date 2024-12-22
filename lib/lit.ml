@@ -22,10 +22,9 @@ type t = {
     id   : VarId.t
   }
 
-let make sign varid
+let make sign varid =
   { sign = sign;
     id = varid }
-end
 
 let make_t = make Sign.T
 let make_f = make Sign.F
