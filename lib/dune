@@ -6,5 +6,5 @@
 (library
  (name cursat)
  (modules parser lexer dimacs lit vector varId)
- (libraries core core_unix))
+ (libraries core core_unix.command_unix))
 

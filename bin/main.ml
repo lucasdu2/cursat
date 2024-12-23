@@ -1,5 +1,4 @@
 open Core
-open Core_unix
 open Lexing
 open Cursat
 
@@ -20,7 +19,6 @@ let parse_with_error lexbuf =
 let rec parse_and_print lexbuf =
   match parse_with_error lexbuf with
   | Some value ->
-     (* TODO: Figure out what to do here... *)
      print_endline (Dimacs.to_string value);
      parse_and_print lexbuf
   | None -> ()
