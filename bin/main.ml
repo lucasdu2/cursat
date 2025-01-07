@@ -30,7 +30,6 @@ let loop filename () =
   parse_and_print lexbuf;
   In_channel.close inx
 
-
 let gen_banner () =
   "cursat (◕ᴥ◕ʋ)\n" ^
     "[written at the Recurse Center, Fall 2 2024, by Lucas Du]\n" ^

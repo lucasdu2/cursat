@@ -17,6 +17,10 @@ module Sign = struct
     | F -> false
 end
 
+module VarId = struct
+  type t = int
+end
+
 type t = {
     sign : Sign.t;
     id   : VarId.t
